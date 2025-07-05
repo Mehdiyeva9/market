@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class BannerImages(models.Model):
+    image = models.ImageField(upload_to="market_img/")
+
+    def __str__(self):
+        return "Banner image"
+
 class Category(models.Model):
     name = models.CharField(max_length=50)
 
@@ -105,3 +111,33 @@ class TermAndCondition(models.Model):
 
     def __str__(self):
         return self.title
+    
+class SiteSettings(models.Model):
+    header_adv_title = models.CharField(max_length=30)
+    header_adv_subtitle = models.CharField(max_length=50)
+    header_adv_content = models.TextField()
+    header_adv_image = models.ImageField(upload_to="market_img/")
+    middle_adv_title1 = models.CharField(max_length=30)
+    middle_adv_subtitle1 = models.CharField(max_length=50)
+    middle_adv_content1 = models.TextField()
+    middle_adv_image1 = models.ImageField(upload_to="market_img/")
+    middle_adv_title2 = models.CharField(max_length=30)
+    middle_adv_subtitle2 = models.CharField(max_length=50)
+    middle_adv_content2 = models.TextField()
+    middle_adv_image2 = models.ImageField(upload_to="market_img/")
+    middle_adv_title3 = models.CharField(max_length=30)
+    middle_adv_subtitle3 = models.CharField(max_length=50)
+    middle_adv_content3 = models.TextField()
+    middle_adv_image3 = models.ImageField(upload_to="market_img/")
+    middle3_adv_app_link1 = models.URLField(max_length=200)
+    middle3_adv_app_link2 = models.URLField(max_length=200)
+    footer_adv_title1 = models.CharField(max_length=30)
+    footer_adv_subtitle1 = models.CharField(max_length=50)
+    footer_adv_content1 = models.TextField()
+    footer_adv_image1 = models.ImageField(upload_to="market_img/")
+    footer_adv_title2 = models.CharField(max_length=30)
+    footer_adv_subtitle2 = models.CharField(max_length=50)
+    footer_adv_content2 = models.TextField()
+    footer_adv_image2 = models.ImageField(upload_to="market_img/")
+    mail_for_subscribe = models.EmailField(max_length=256)
+    
