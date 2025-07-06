@@ -140,4 +140,20 @@ class SiteSettings(models.Model):
     footer_adv_content2 = models.TextField()
     footer_adv_image2 = models.ImageField(upload_to="market_img/")
     mail_for_subscribe = models.EmailField(max_length=256)
-    
+    about_image = models.ImageField(upload_to="market_img/")
+    about_title = models.CharField(max_length=50)
+    about_content = models.TextField()
+    about_adv_image = models.ImageField(upload_to="market_img/")
+    about_adv_title = models.CharField(max_length=50)
+    about_adv_content = models.TextField()
+
+    class Meta:
+        verbose_name_plural = "Settings"
+
+    def __str__(self):
+        return "Settings"
+
+    def save(self, *args, **kwargs):
+        if not self.id and SiteSettings.objects.exists():
+            pass
+        return super(SiteSettings, self).save(*args, **kwargs)
