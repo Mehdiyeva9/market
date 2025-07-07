@@ -29,14 +29,15 @@ class BannerImageSerializer(serializers.ModelSerializer):
         models = BannerImages
         fields = "__all__"
 
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        models = Category
-        fields = "__all__"
-
 class SubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         models = SubCategory
+        fields = "__all__"
+
+class CategorySerializer(serializers.ModelSerializer):
+    subcategory = SubCategorySerializer()
+    class Meta:
+        models = Category
         fields = "__all__"
 
 class ProductInfoSerializer(serializers.ModelSerializer):
