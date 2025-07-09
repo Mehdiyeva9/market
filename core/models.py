@@ -45,7 +45,7 @@ class Product(models.Model):
 class ProducInfo(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="product infos")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="product_infos")
     
     def __str__(self):
         return self.title
@@ -55,7 +55,7 @@ class FavoriteList(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_favori_items')
 
     def __str__(self):
-        return self.product
+        return self.product.name
     
 class Basket(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="basket_product")
@@ -63,7 +63,7 @@ class Basket(models.Model):
     quantity = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.product
+        return self.product.name
     
 class HelpForm(models.Model):
     first_name = models.CharField(max_length=50)

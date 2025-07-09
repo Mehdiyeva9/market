@@ -2,7 +2,7 @@ from django.conf import urls
 from core.api import views
 from django.urls import path
 
-urlpatterns = {
+urlpatterns = [
     path('user-create/', views.UserCreateAPIView.as_view()),
     path('bannerimage-list/', views.BannerImageListAPIView.as_view()),
     path('category-list/', views.CategoryListAPIView.as_view()),
@@ -21,4 +21,4 @@ urlpatterns = {
     path('shippingandreturn-list/', views.ShippingAndReturnListAPIView.as_view()),
     path('termandcondition-list/', views.TermAndConditionListAPIView.as_view()),
     path('sitesettings-list/', views.SiteSettingsListAPIView.as_view())
-}
+]

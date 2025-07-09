@@ -1,5 +1,5 @@
 from core.models import (
-    BannerImages, Category, SubCategory, Product, ProducInfo, FavoriteList, Basket, HelpForm, 
+    BannerImages, Category, Product, FavoriteList, Basket, HelpForm, 
     Location, FAQ, SocialMedia, ShippingAndReturn, TermAndCondition, SiteSettings)
 from core.api.serializer import (
     UserCreateSerializer, BannerImageSerializer, CategorySerializer, ProductSerializer,
@@ -56,7 +56,7 @@ class FavoriteListCreateAPIView(CreateAPIView):
         if serializer.is_valid():
             serializer.save(user = request.user)
             return Response(serializer.data, status = status.HTTP_200_OK)
-        return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.error, status = status.HTTP_400_BAD_REQUEST)
     
 class BasketListAPIView(ListAPIView):
     queryset = Basket.objects.all()
@@ -80,8 +80,8 @@ class BasketCreateAPIView(CreateAPIView):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.data, status = status.HTTP_200_OK)
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
     
 class HelpFormCreateAPIView(CreateAPIView):
     queryset = HelpForm.objects.all()
